@@ -9,6 +9,7 @@ let database  ={
 const titleHead = document.querySelector('head');
 const body = document.querySelector('body');
 
+
 function pageLoading(){
   const title = document.createElement('title');
   const stylelink1 = document.createElement('link')
@@ -93,32 +94,6 @@ function pageLoading(){
 
 
 }
-
-function openLoginForm(){
-  document.body.classList.add("showLoginForm");
-}
-function closeLoginForm(){
-  document.body.classList.remove("showLoginForm");
-  const pop= document.querySelector('.popup-div')
-  if(pop!==null){
-    pop.remove()
-  }
-}
-
-
-pageLoading()
-
-const myContact = document.querySelector('.download-btn')
-const changePage = document.querySelector('ul')
-
-myContact.addEventListener('click', downloadPopUp)
-changePage.addEventListener('click', doSomething)
-
-
-function nextPage(e){
-  console.log(e.target.classList)
-}
-
 function downloadPopUp(){
   const body= document.querySelector('body')
 
@@ -155,15 +130,21 @@ popup.innerHTML = html
 
 
 }
-
-function capitalizeFrontEnd(){
-  const capContainer = document.createElement('div')
-
-  capContainer.classList.add('cap-container')
-  body.appendChild(capContainer)
-
+function pageWrapper(){
+  const wrapper = document.createElement('div')
+  wrapper.classList.add('wrapper')
+  body.appendChild(wrapper)
 }
-
+function openLoginForm(){
+  document.body.classList.add("showLoginForm");
+}
+function closeLoginForm(){
+  document.body.classList.remove("showLoginForm");
+  const pop= document.querySelector('.popup-div')
+  if(pop!==null){
+    pop.remove()
+  }
+}
 function doSomething(event){
   let option = event.target
 
@@ -173,7 +154,7 @@ function doSomething(event){
     }
     const active = document.querySelector('.class0')
     active.classList.add('active')
-    basicForm()
+    capitalizeFrontEnd()
   }else
   if(option.classList[0]==='class1'){
     // remove the active class
@@ -187,6 +168,7 @@ function doSomething(event){
       // set a new active class
       const active = document.querySelector('.class1')
       active.classList.add('active')
+      reverseStringFrontEnd()
   }else  if(option.classList[0]==='class2'){
     // remove the active class
     for(let i=0;i<option.parentNode.parentNode.children.length;i++){
@@ -255,4 +237,69 @@ function doSomething(event){
 
 
   }
+}
+function eventListerners(){
+  const myContact = document.querySelector('.download-btn')
+  const changePage = document.querySelector('ul')
+
+  myContact.addEventListener('click', downloadPopUp)
+  changePage.addEventListener('click', doSomething)
+}
+function capitalizeFrontEnd(){
+  const wrapper =  document.querySelector('.wrapper')
+  if(wrapper.children!==null){wrapper.children.remove()}
+  const capContainer = document.createElement('div')
+
+  capContainer.classList.add('cap-container')
+  wrapper.appendChild(capContainer)
+
+}
+
+
+pageLoading()
+pageWrapper()
+eventListerners()
+
+
+
+
+
+
+function reverseStringFrontEnd(){
+  const wrapper =  document.querySelector('.wrapper')
+  if(wrapper.children!==null){wrapper.children.remove()}
+  reverseStringContainer.classList.add('reverseString-container')
+  wrapper.appendChild(reverseStringContainer)
+
+}
+
+function capitalizeFrontEnd(){
+  if(document.querySelector('.cap-container')!==null){
+    document.querySelector('.cap-container').remove()
+  }
+  const capContainer = document.createElement('div')
+
+  capContainer.classList.add('cap-container')
+  body.appendChild(capContainer)
+
+}
+function capitalizeFrontEnd(){
+  if(document.querySelector('.cap-container')!==null){
+    document.querySelector('.cap-container').remove()
+  }
+  const capContainer = document.createElement('div')
+
+  capContainer.classList.add('cap-container')
+  body.appendChild(capContainer)
+
+}
+function capitalizeFrontEnd(){
+  if(document.querySelector('.cap-container')!==null){
+    document.querySelector('.cap-container').remove()
+  }
+  const capContainer = document.createElement('div')
+
+  capContainer.classList.add('cap-container')
+  body.appendChild(capContainer)
+
 }
