@@ -54,6 +54,7 @@ function pageLoading(){
 
 
     basicLink.classList.add('class0')
+
     registerLink.classList.add('class1')
     loginLink.classList.add('class2')
     miniLink.classList.add('class3')
@@ -87,7 +88,7 @@ function pageLoading(){
       header2.appendChild(mini)
       header2.appendChild(labels)
 
-
+      capitalizeFrontEnd()
 
 
 
@@ -108,7 +109,15 @@ function closeLoginForm(){
 pageLoading()
 
 const myContact = document.querySelector('.download-btn')
+const changePage = document.querySelector('ul')
+
 myContact.addEventListener('click', downloadPopUp)
+changePage.addEventListener('click', doSomething)
+
+
+function nextPage(e){
+  console.log(e.target.classList)
+}
 
 function downloadPopUp(){
   const body= document.querySelector('body')
@@ -145,4 +154,105 @@ popup.innerHTML = html
  openLoginForm()
 
 
+}
+
+function capitalizeFrontEnd(){
+  const capContainer = document.createElement('div')
+
+  capContainer.classList.add('cap-container')
+  body.appendChild(capContainer)
+
+}
+
+function doSomething(event){
+  let option = event.target
+
+  if(option.classList[0]==='class0'){
+    for(let i=0;i<option.parentNode.parentNode.children.length;i++){
+      option.parentNode.parentNode.children[i].children[0].classList.remove('active')
+    }
+    const active = document.querySelector('.class0')
+    active.classList.add('active')
+    basicForm()
+  }else
+  if(option.classList[0]==='class1'){
+    // remove the active class
+    for(let i=0;i<option.parentNode.parentNode.children.length;i++){
+      option.parentNode.parentNode.children[i].children[0].classList.remove('active')}
+      // clear the page of the previous forms
+      if(document.querySelector('.main-content')!==null){
+        const clear= document.querySelector('.main-content')
+        clearElement(clear)
+      }
+      // set a new active class
+      const active = document.querySelector('.class1')
+      active.classList.add('active')
+  }else  if(option.classList[0]==='class2'){
+    // remove the active class
+    for(let i=0;i<option.parentNode.parentNode.children.length;i++){
+      option.parentNode.parentNode.children[i].children[0].classList.remove('active')  }
+      // clear the page of the previous forms
+      if(document.querySelector('.main-content')!==null){
+        const clear= document.querySelector('.main-content')
+        clearElement(clear)
+      }
+      // set a new active class
+    const active = document.querySelector('.class2')
+    active.classList.add('active')
+  }else  if(option.classList[0]==='class3'){
+    // remove the active class
+    for(let i=0;i<option.parentNode.parentNode.children.length;i++){
+      option.parentNode.parentNode.children[i].children[0].classList.remove('active')  }
+      // clear the page of the previous forms
+      if(document.querySelector('.main-content')!==null){
+        const clear= document.querySelector('.main-content')
+        clearElement(clear)
+      }
+      // set a new active class
+    const active = document.querySelector('.class3')
+    active.classList.add('active')
+  }else   if(option.classList[0]==='class4'){
+    // remove the active class
+    for(let i=0;i<option.parentNode.parentNode.children.length;i++){
+      option.parentNode.parentNode.children[i].children[0].classList.remove('active')  }
+      // clear the page of the previous forms
+      if(document.querySelector('.main-content')!==null){
+        const clear= document.querySelector('.main-content')
+        clearElement(clear)
+      }
+      // set a new active class
+    const active = document.querySelector('.class4')
+    active.classList.add('active')
+  }
+  if(option.classList[0]==='class5'){
+    // remove the active class
+    for(let i=0;i<option.parentNode.parentNode.children.length;i++){
+      option.parentNode.parentNode.children[i].children[0].classList.remove('active')  }
+      // clear the page of the previous forms
+      if(document.querySelector('.main-content')!==null){
+        const clear= document.querySelector('.main-content')
+        clearElement(clear)
+      }
+      // set a new active class
+    const active = document.querySelector('.class5')
+    active.classList.add('active')
+
+
+  }
+  if(option.classList[0]==='class6'){
+    // remove the active class
+    for(let i=0;i<option.parentNode.parentNode.children.length;i++){
+      option.parentNode.parentNode.children[i].children[0].classList.remove('active')  }
+      // clear the page of the previous forms
+      if(document.querySelector('.main-content')!==null){
+        const clear= document.querySelector('.main-content')
+        clearElement(clear)
+      }
+      // set a new active class
+    const active = document.querySelector('.class6')
+    active.classList.add('active')
+
+
+
+  }
 }
