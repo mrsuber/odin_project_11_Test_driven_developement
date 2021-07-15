@@ -3,6 +3,7 @@ let database  ={
   header_title:'Welcome To Test Driven Developement Odin Assignment 11',
   download_button:'Contact Me',
   header2_links:['capitalize','reverseString','calculator','Caesar Cipher','Array Analysis'],
+  avatar:"https://avatars.githubusercontent.com/u/40745841?s=400&u=b3b4ed7263a659508bbfbfa924fd18166486ba96&v=4"
 }
 // querrselectors
 const titleHead = document.querySelector('head');
@@ -14,7 +15,7 @@ function pageLoading(){
   const stylelink2 = document.createElement('link')
   const header = document.createElement('header')
   const headerTitle = document.createElement('h1')
-  const downloadLink = document.createElement('a')
+  const downloadLink = document.createElement('button')
 
 
   const header2 = document.createElement('ul')
@@ -39,7 +40,7 @@ function pageLoading(){
     stylelink1.rel = 'stylesheet'
     stylelink1.href = 'css/styles.css'
     headerTitle.innerText = database.header_title;
-    downloadLink.href = "#";
+    downloadLink.classList.add('download-btn');
     downloadLink.innerText= database.download_button
 
 
@@ -92,4 +93,56 @@ function pageLoading(){
 
 }
 
+function openLoginForm(){
+  document.body.classList.add("showLoginForm");
+}
+function closeLoginForm(){
+  document.body.classList.remove("showLoginForm");
+  const pop= document.querySelector('.popup-div')
+  if(pop!==null){
+    pop.remove()
+  }
+}
+
+
 pageLoading()
+
+const myContact = document.querySelector('.download-btn')
+myContact.addEventListener('click', downloadPopUp)
+
+function downloadPopUp(){
+  const body= document.querySelector('body')
+
+
+const popup = document.createElement('div')
+popup.classList.add('popup-div')
+
+ let html= `<div class="popup-overlay">
+                </div> <div class="popup">
+                <div class="popup-close" onclick="closeLoginForm()">×</div>
+                <div class="form">
+                    <div class="avatar">
+                        <img src="https://avatars.githubusercontent.com/u/40745841?s=400&u=b3b4ed7263a659508bbfbfa924fd18166486ba96&v=4" alt="">
+                    </div>
+                    <div class="header">       Contact Info     </div>
+                    <div class="element">
+                        <label>Full Name</label>
+                        <h3>Mohamad Siysinyuy Banbong</h3>
+                    </div>
+                    <div class="element">
+                        <label>Contacts</label>
+                        <h3>msiysinyuy@gmail.com</h3>
+                    </div>
+                    <div class="element">
+                        <label >Git Link</label>
+                        <h3>Github.com/mrsuber</h3>
+                    </div>
+
+                </div>
+            </div>`
+popup.innerHTML = html
+ body.appendChild(popup)
+ openLoginForm()
+
+
+}
