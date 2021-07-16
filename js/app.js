@@ -135,6 +135,7 @@ function pageWrapper(){
   const wrapper = document.createElement('div')
   wrapper.classList.add('main-content')
   body.appendChild(wrapper)
+  capitalizeFrontEnd()
 }
 function openLoginForm(){
   document.body.classList.add("showLoginForm");
@@ -252,18 +253,75 @@ function doSomething(event){
 function eventListerners(){
   const myContact = document.querySelector('.download-btn')
   const changePage = document.querySelector('ul')
+  const runTest = document.querySelector('.run-test')
 
   myContact.addEventListener('click', downloadPopUp)
   changePage.addEventListener('click', doSomething)
+  runTest.addEventListener('click' , runManualTest)
 }
 function capitalizeFrontEnd(){
 
   const wrapper = document.querySelector('.main-content')
   const capContainer = document.createElement('div')
+  const table = document.createElement('table')
+  const tableHead = document.createElement('thead')
+  const tableHeadRow = document.createElement('tr')
+  const tableheadColomn1 = document.createElement('th')
+  const tableheadColomn2 = document.createElement('th')
+  const tableheadColomn3 = document.createElement('th')
+  const tableheadColomn4 = document.createElement('th')
+  const tableBody = document.createElement('tbody')
+  const tableBodyRow = document.createElement('tr')
+  const tableBodyColomn1 = document.createElement('td')
+  const tableBodyColomn2 = document.createElement('td')
+  const tableBodyColomn3 = document.createElement('td')
+  const tableBodyColomn4 = document.createElement('td')
+
+
 
   capContainer.classList.add('cap-container')
-  wrapper.appendChild(capContainer)
+  // tableBodyColomn1.classList.add('input')
+  // tableBodyColomn2.classList.add('expected-output')
+  tableheadColomn1.innerText = "Input"
+  tableheadColomn2.innerText = "Expected Output"
+  tableheadColomn3.innerText = "Submit"
+  tableheadColomn4.innerText = "Data Analysis"
 
+  tableBodyColomn1.innerHTML = '<input class="input" type="text" placeholder="Enter Word/Sentence">'
+  tableBodyColomn2.innerHTML = '<input class="expected-output" type="text" placeholder="Enter Expected Output">'
+  tableBodyColomn3.innerHTML = '<button class="run-test">Run Test</button><button class="run-auto-test">Run Auto Test</button>'
+  tableBodyColomn4.innerHTML="Input: <br>OutPut:<br>Expected Output:<br>Test Status"
+
+  wrapper.appendChild(capContainer)
+  capContainer.appendChild(table)
+  table.appendChild(tableHead)
+  tableHead.appendChild(tableHeadRow)
+  tableHeadRow.appendChild(tableheadColomn1)
+  tableHeadRow.appendChild(tableheadColomn2)
+  tableHeadRow.appendChild(tableheadColomn3)
+  tableHeadRow.appendChild(tableheadColomn4)
+
+  table.appendChild(tableBody)
+  tableBody.appendChild(tableBodyRow)
+  tableBodyRow.appendChild(tableBodyColomn1)
+  tableBodyRow.appendChild(tableBodyColomn2)
+  tableBodyRow.appendChild(tableBodyColomn3)
+  tableBodyRow.appendChild(tableBodyColomn4)
+
+}
+function runManualTest(e){
+  // const input = document.querySelector('.input')
+  const expectedOutput = document.querySelector('.expected-output')
+  // console.log(input.value)
+  // if(input.value ===""){
+  //   alert("please enter a string")
+  // }
+  if(expectedOutput.value=""){
+    alert("please enter expected output")
+  }
+  // console.log(input.value)
+  console.log(expectedOutput.value)
+  console.log(e)
 }
 
 
