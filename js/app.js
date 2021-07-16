@@ -89,7 +89,7 @@ function pageLoading(){
       header2.appendChild(mini)
       header2.appendChild(labels)
 
-      capitalizeFrontEnd()
+
 
 
 
@@ -131,8 +131,9 @@ popup.innerHTML = html
 
 }
 function pageWrapper(){
+
   const wrapper = document.createElement('div')
-  wrapper.classList.add('wrapper')
+  wrapper.classList.add('main-content')
   body.appendChild(wrapper)
 }
 function openLoginForm(){
@@ -145,6 +146,13 @@ function closeLoginForm(){
     pop.remove()
   }
 }
+function clearElement(element){
+  // console.log(element.children)
+  for(let i=0;i<element.children.length;i++){
+    element.children[i].remove();
+  }
+
+}
 function doSomething(event){
   let option = event.target
 
@@ -152,19 +160,22 @@ function doSomething(event){
     for(let i=0;i<option.parentNode.parentNode.children.length;i++){
       option.parentNode.parentNode.children[i].children[0].classList.remove('active')
     }
+    if(document.querySelector('.main-content')!==null){
+    const clear= document.querySelector('.main-content')
+    clearElement(clear)
+  }
     const active = document.querySelector('.class0')
     active.classList.add('active')
     capitalizeFrontEnd()
-  }else
-  if(option.classList[0]==='class1'){
-    // remove the active class
-    for(let i=0;i<option.parentNode.parentNode.children.length;i++){
+
+
+  }else  if(option.classList[0]==='class1'){
+            for(let i=0;i<option.parentNode.parentNode.children.length;i++){
       option.parentNode.parentNode.children[i].children[0].classList.remove('active')}
-      // clear the page of the previous forms
-      if(document.querySelector('.main-content')!==null){
-        const clear= document.querySelector('.main-content')
-        clearElement(clear)
-      }
+              if(document.querySelector('.main-content')!==null){
+              const clear= document.querySelector('.main-content')
+              clearElement(clear)
+            }
       // set a new active class
       const active = document.querySelector('.class1')
       active.classList.add('active')
@@ -246,8 +257,8 @@ function eventListerners(){
   changePage.addEventListener('click', doSomething)
 }
 function capitalizeFrontEnd(){
-  const wrapper =  document.querySelector('.wrapper')
-  if(wrapper.children!==null){wrapper.children.remove()}
+
+  const wrapper = document.querySelector('.main-content')
   const capContainer = document.createElement('div')
 
   capContainer.classList.add('cap-container')
@@ -270,36 +281,5 @@ function reverseStringFrontEnd(){
   if(wrapper.children!==null){wrapper.children.remove()}
   reverseStringContainer.classList.add('reverseString-container')
   wrapper.appendChild(reverseStringContainer)
-
-}
-
-function capitalizeFrontEnd(){
-  if(document.querySelector('.cap-container')!==null){
-    document.querySelector('.cap-container').remove()
-  }
-  const capContainer = document.createElement('div')
-
-  capContainer.classList.add('cap-container')
-  body.appendChild(capContainer)
-
-}
-function capitalizeFrontEnd(){
-  if(document.querySelector('.cap-container')!==null){
-    document.querySelector('.cap-container').remove()
-  }
-  const capContainer = document.createElement('div')
-
-  capContainer.classList.add('cap-container')
-  body.appendChild(capContainer)
-
-}
-function capitalizeFrontEnd(){
-  if(document.querySelector('.cap-container')!==null){
-    document.querySelector('.cap-container').remove()
-  }
-  const capContainer = document.createElement('div')
-
-  capContainer.classList.add('cap-container')
-  body.appendChild(capContainer)
 
 }
