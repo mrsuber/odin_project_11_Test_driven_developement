@@ -3,7 +3,11 @@ let database  ={
   header_title:'Welcome To Test Driven Developement Odin Assignment 11',
   download_button:'Contact Me',
   header2_links:['capitalize','reverseString','calculator','Caesar Cipher','Array Analysis'],
-  avatar:"https://avatars.githubusercontent.com/u/40745841?s=400&u=b3b4ed7263a659508bbfbfa924fd18166486ba96&v=4"
+  avatar:"https://avatars.githubusercontent.com/u/40745841?s=400&u=b3b4ed7263a659508bbfbfa924fd18166486ba96&v=4",
+  inputs:"",
+  expected_output:"",
+  outputs:'',
+  status:''
 }
 // querrselectors
 const titleHead = document.querySelector('head');
@@ -180,7 +184,7 @@ function doSomething(event){
       // set a new active class
       const active = document.querySelector('.class1')
       active.classList.add('active')
-      reverseStringFrontEnd()
+
   }else  if(option.classList[0]==='class2'){
     // remove the active class
     for(let i=0;i<option.parentNode.parentNode.children.length;i++){
@@ -277,6 +281,22 @@ function capitalizeFrontEnd(){
   const tableBodyColomn3 = document.createElement('td')
   const tableBodyColomn4 = document.createElement('td')
 
+  const input1 = document.createElement('input')
+  const input2 = document.createElement('input')
+  const buttonRunTest=document.createElement('button')
+  const buttonRunAutoTest= document.createElement('button')
+  buttonRunTest.classList.add('run-test')
+  buttonRunTest.innerText="Run Test"
+  buttonRunAutoTest.classList.add('run-auto-test')
+  buttonRunAutoTest.innerText= "Run Auto Test"
+  input1.classList.add('input')
+  input1.placeholder="Enter Word/Sentence"
+  input1.type='text'
+
+  input2.classList.add('expected-output')
+  input2.id="expected-output"
+  input2.placeholder="Enter Expected Output"
+  input2.type='text'
 
 
   capContainer.classList.add('cap-container')
@@ -287,10 +307,10 @@ function capitalizeFrontEnd(){
   tableheadColomn3.innerText = "Submit"
   tableheadColomn4.innerText = "Data Analysis"
 
-  tableBodyColomn1.innerHTML = '<input class="input" type="text" placeholder="Enter Word/Sentence">'
-  tableBodyColomn2.innerHTML = '<input class="expected-output" type="text" placeholder="Enter Expected Output">'
-  tableBodyColomn3.innerHTML = '<button class="run-test">Run Test</button><button class="run-auto-test">Run Auto Test</button>'
-  tableBodyColomn4.innerHTML="Input: <br>OutPut:<br>Expected Output:<br>Test Status"
+  // tableBodyColomn1.innerHTML = '<input class="input" type="text" placeholder="Enter Word/Sentence">'
+  // tableBodyColomn2.innerHTML = '<input class="expected-output" type="text" placeholder="Enter Expected Output">'
+  // tableBodyColomn3.innerHTML = '<button class="run-test">Run Test</button><button class="run-auto-test">Run Auto Test</button>'
+  tableBodyColomn4.innerHTML="Input:"+database.inputs+" <br>OutPut:"+database.outputs+"<br>Expected Output:"+database.expected_output+"<br>Test Status: "+database.status
 
   wrapper.appendChild(capContainer)
   capContainer.appendChild(table)
@@ -308,36 +328,44 @@ function capitalizeFrontEnd(){
   tableBodyRow.appendChild(tableBodyColomn3)
   tableBodyRow.appendChild(tableBodyColomn4)
 
+  tableBodyColomn1.appendChild(input1)
+  tableBodyColomn2.appendChild(input2)
+  tableBodyColomn3.appendChild(buttonRunTest)
+  tableBodyColomn3.appendChild(buttonRunAutoTest)
+
+
 }
 function runManualTest(e){
-  // const input = document.querySelector('.input')
-  const expectedOutput = document.querySelector('.expected-output')
+  const input = document.querySelector('.input')
+  const expectedOutput = document.getElementById('expected-output')
   // console.log(input.value)
-  // if(input.value ===""){
-  //   alert("please enter a string")
-  // }
-  if(expectedOutput.value=""){
-    alert("please enter expected output")
+  if(input.value ===""){
+    alert("please enter a string")
+    return
   }
-  // console.log(input.value)
+
+  if(expectedOutput.value===""){
+    alert("please enter expected output")
+    return
+  }
+capitalizingFirstLetter(input.value);
+  database.expected_output=expectedOutput.value
+
+  console.log(input.value)
   console.log(expectedOutput.value)
   console.log(e)
 }
+function capitalizingFirstLetter(string){
+  if(String.typeOf(string)){
+    alert("this is a string")
+  }else{
+    alert("enter a string")
+  }
+}
+
+
 
 
 pageLoading()
 pageWrapper()
 eventListerners()
-
-
-
-
-
-
-function reverseStringFrontEnd(){
-  const wrapper =  document.querySelector('.wrapper')
-  if(wrapper.children!==null){wrapper.children.remove()}
-  reverseStringContainer.classList.add('reverseString-container')
-  wrapper.appendChild(reverseStringContainer)
-
-}
